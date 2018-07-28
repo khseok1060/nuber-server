@@ -57,6 +57,7 @@ class User extends BaseEntity{
   lastOrientation: number;
   
   @CreateDateColumn() createdAt: string;
+  
   @UpdateDateColumn() updatedAt: string;
 
   get fullName(): string {
