@@ -38,7 +38,7 @@ class User extends BaseEntity{
 
   @Column({type: "boolean", default: false})
   verifiedPhoneNumber: boolean;
-
+  
   @Column({type: "text"})
   profilePhoto: string;
   
@@ -59,10 +59,13 @@ class User extends BaseEntity{
   
   @Column({type: "double precision", default: 0})
   lastOrientation: number;
+  
+  @Column({type: "text", nullable: true})
+  fbId: string;
 
   @ManyToOne(type => Chat, chat => chat.participants)
   chat: Chat;
-
+  
   @OneToMany(type => Message, message => message.user)
   messages: Message[];
   
