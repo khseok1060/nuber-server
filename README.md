@@ -5,7 +5,7 @@ Server for the (N)Uber Clone Course on Nomad Academy. GraphQL, Typescript, NodeJ
 
 ### Public Resolvers:
 
-- [ ] Sign in / Sign Up with Facebbok
+- [x] Sign in / Sign Up with Facebbok
 - [ ] Sign in with Email
 - [ ] Start Phone Number Verification
 - [ ] Finish Phone Number Verification
@@ -14,6 +14,8 @@ Server for the (N)Uber Clone Course on Nomad Academy. GraphQL, Typescript, NodeJ
 
 ### Private Resolvers:
 
+- [ ] Generate JWT
+- [ ] Verify JWT
 - [ ] Verify Email
 - [ ] Get my Profile
 - [ ] Update my Profile
