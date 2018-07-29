@@ -5,13 +5,27 @@ import { Resolvers } from "../../../types/resolvers";
 const resolvers: Resolvers = {
   Mutation: {
     EmailSignIn: async (_, args: EmailSignInMutationArgs): Promise<EmailSignInResponse> => {
-      const { email } = args;
+      const { email, password } = args;
       try {
         const user = await User.findOne({ email });
         if (!user) {
           return {
             ok: false,
-            error: "No User found with that email",
+            error: "No user found with that email",
+            token: null
+          };
+        }
+        const checkPassword = await user.comparePassword(password);
+        if (checkPassword) {
+          return {
+            ok: true,
+            error: null,
+            token: "Coming Soon"
+          }
+        } else {
+          return {
+            ok: false,
+            error: "Wrong password",
             token: null
           }
         }
@@ -20,7 +34,7 @@ const resolvers: Resolvers = {
           ok: false,
           error: error.message,
           token: null
-        }
+        };
       }
     }
   }
