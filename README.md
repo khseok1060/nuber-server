@@ -9,13 +9,13 @@ Server for the (N)Uber Clone Course on Nomad Academy. GraphQL, Typescript, NodeJ
 - [x] Sign in with Email
 - [x] Start Phone Number Verification
 - [x] Finish Phone Number Verification
-- [ ] Sign Up with Email
+- [x] Sign Up with Email
 
 ---
 
 ### Authentication
 
-- [ ] Generate JWT
+- [x] Generate JWT
 - [ ] Verify JWT
 
 ---
