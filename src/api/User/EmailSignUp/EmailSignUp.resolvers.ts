@@ -25,7 +25,7 @@ const resolvers: Resolvers = {
               const emailVerification = await Verification.create({
                 payload: newUser.email,
                 target: "EMAIL"
-              });
+              }).save();
               await sendVerifictionEmail(newUser.fullName, emailVerification.key);
             }
             const token = createJWT(newUser.id);
