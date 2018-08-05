@@ -2,15 +2,15 @@ import Place from "../../../entities/Place";
 import User from "../../../entities/User";
 import { EditPlaceMutationArgs, EditPlaceResponse } from "../../../types/graph";
 import { Resolvers } from "../../../types/resolvers";
-import privateResolver from "../../../utils/privateResolver";
 import cleanNullArgs from "../../../utils/cleanNullArgs";
+import privateResolver from "../../../utils/privateResolver";
 
 const resolvers: Resolvers = {
   Mutation: {
-    EditPlace: privateResolver(async(_, args: EditPlaceMutationArgs, { req }): Promise<EditPlaceResponse> => {
+    EditPlace: privateResolver(async (_, args: EditPlaceMutationArgs, { req }): Promise<EditPlaceResponse> => {
       const user: User = req.user;
       try {
-        const place = Place.findOne({ id: args.placeId });
+        const place = await Place.findOne({ id: args.placeId });
         if (place) {
           if (place.userId === user.id) {
             const notNull = cleanNullArgs(args);
@@ -18,27 +18,26 @@ const resolvers: Resolvers = {
             return {
               ok: true,
               error: null
-            }
+            };
           } else {
             return {
               ok: false,
               error: "Not Authorized"
-            }
+            };
           }
         } else {
           return {
             ok: false,
-            error: "Plcae not found"
-          }
+            error: "Place not found"
+          };
         }
-      } catch(error) {
+      } catch (error) {
         return {
           ok: false,
           error: error.message
-        }
+        };
       }
-    })
-  }
-}
-
+    }
+  )}
+};
 export default resolvers;
