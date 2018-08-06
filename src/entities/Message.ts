@@ -18,7 +18,7 @@ class Message extends BaseEntity {
 
   @CreateDateColumn() createdAt: string;
   
-  @UpdateDateColumn() upadtedAt: string;
+  @UpdateDateColumn() updatedAt: string;
 
 }
 
